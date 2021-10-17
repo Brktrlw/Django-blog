@@ -5,6 +5,8 @@ from .models import Article
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ["title","author","createdDate"]
+    list_display_links = ["title","createdDate"]
+    search_fields = ["title"]
     class Meta:
         model=Article
 

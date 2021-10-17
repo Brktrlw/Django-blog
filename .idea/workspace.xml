@@ -4,7 +4,7 @@
     <list default="true" id="b9022848-6503-48cd-ace0-4e11dd59e4e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/article/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/article/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/article/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/blog/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
