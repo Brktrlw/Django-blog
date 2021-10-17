@@ -7,6 +7,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ["title","author","createdDate"]
     list_display_links = ["title","createdDate"]
     search_fields = ["title"]
+    list_filter = ["createdDate"]
     class Meta:
         model=Article
 
