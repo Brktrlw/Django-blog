@@ -11,25 +11,26 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Hesap Oluştur</h2>
 
-              <form>
+              <form method="post">
+                {% csrf_token %}
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Adınız</label>
+                  <input type="text" name="username" id="id_username" class="form-control form-control-lg" />
+                  <label class="form-label">Kullanıcı Adınız</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">Mail Adresiniz</label>
+                  <input type="text" id="id_mail" name="mail" class="form-control form-control-lg" />
+                  <label class="form-label">Mail Adresiniz</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Parola</label>
+                  <input type="password" id="id_password" maxlength="50" name="password" class="form-control form-control-lg" />
+                  <label class="form-label">Parola</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Parola Tekrarı</label>
+                  <input type="password" name="confirm" maxlength="50" id="id_confirm" class="form-control form-control-lg" />
+                  <label class="form-label">Parola Tekrarı</label>
                 </div>
 
                 <div class="form-check d-flex justify-content-center mb-5">
@@ -45,7 +46,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><i class="fas fa-check"></i> Kayıt Ol </button>
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><i class="fas fa-check"></i> Kayıt Ol </button>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Zaten hesabın var mı, <a href="#!" class="fw-bold text-body"><u>Giriş Yap</u></a></p>
