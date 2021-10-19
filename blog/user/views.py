@@ -25,6 +25,6 @@ def register(request):
 
 
 def loginUser(request):
-    return HttpResponse("giriş yap")
+    return render(request,"login.html")
 def logout(request):
     return HttpResponse("çıkış yap")
