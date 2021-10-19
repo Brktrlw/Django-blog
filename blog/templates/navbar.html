@@ -20,7 +20,8 @@
             </li>
          </ul>
          {% if request.user.is_authenticated %}
-         <a class="btn btn-success"><i class="fas fa-pencil-alt"></i> Makale Yaz</a>&nbsp;
+
+         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#openAddArticle"><i class="fas fa-pencil-alt"></i> Makale Yaz</button>&nbsp;
          <div class="dropdown">
             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user"></i> Hesabım
@@ -54,4 +55,32 @@
          </div>
       </div>
    </div>
+</div>
+
+<div class="modal fade" id="openAddArticle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+                  <img src="https://cdn-icons.flaticon.com/png/512/3079/premium/3079967.png?token=exp=1634665909~hmac=be834a8d3f3360d3dc3b79b5b1e4f849" width="100" alt="">
+        <h5 class="modal-title" id=""><i class="fas fa-pencil-ruler"></i> Yeni Makale Oluştur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Makale Başlığı:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Makale Açıklaması:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fas fa-times"></i> Kapat</button>
+        <button type="button" class="btn btn-primary"><i class="far fa-save"></i> Makale Oluştur</button>
+      </div>
+    </div>
+  </div>
 </div>
