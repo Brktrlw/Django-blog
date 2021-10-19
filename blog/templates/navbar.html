@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-light">
    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar scroll</a>
+      <a class="navbar-brand" href="#">Django Blog</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -17,9 +17,6 @@
             <li class="nav-item">
                <a class="btn btn-outline-info" href="#"><i class="fas fa-clipboard-list"></i> Makaleler</a>
             </li>
-            <li class="nav-item">
-               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
-            </li>
          </ul>
          {% if request.user.is_authenticated %}
          <div class="dropdown">
@@ -27,9 +24,8 @@
             <i class="fas fa-user"></i> Hesabım
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
-               <li><a class="dropdown-item" href="#">Ayarlar</a></li>
-               <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
-               <li><a class="dropdown-item" href="#">Something else here</a></li>
+               <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog" style="color:#313538"></i> Ayarlar</a></li>
+               <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-sign-out-alt" style="color:red"></i> Çıkış Yap</button></li>
             </ul>
          </div>
          {% else %}
@@ -39,3 +35,20 @@
       </div>
    </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Çıkış Yap</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            Çıkış Yapmak İstediğinize Emin Misiniz?
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Kapat</button>
+            <a href="/user/logout"><button type="button" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</button></a>
+         </div>
+      </div>
+   </div>
+</div>
