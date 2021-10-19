@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from .forms import RegisterForm,LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate
+from django.contrib.auth import logout as django_logout
 
 from django.contrib import messages
 def register(request):
@@ -37,4 +38,6 @@ def loginUser(request):
 
     #return render(request,"login.html")
 def logout(request):
-    return HttpResponse("çıkış yap")
+    django_logout(request)
+    messages.success(request,"Başarıyla çıkış yaptınız")
+    return redirect("index")
