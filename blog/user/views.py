@@ -1,7 +1,8 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .forms import RegisterForm
+from .forms import RegisterForm,LoginForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login,authenticate
+
 from django.contrib import messages
 def register(request):
     form =RegisterForm(request.POST or None)
@@ -18,13 +19,22 @@ def register(request):
     else:
         return render(request,"register.html")
 
-
-
-
-
-
-
 def loginUser(request):
-    return render(request,"login.html")
+    form=LoginForm(request.POST or None)
+    if form.is_valid():
+        username=form.cleaned_data.get("username")
+        password=form.cleaned_data.get("password")
+        user=authenticate(username=username,password=password)
+        if user is None:
+            messages.warning(request,"Giriş bilgileriniz hatalıdır,lütfen tekrar deneyiniz.")
+            return render(request,"login.html")
+        else:
+            messages.success(request,"Başarıyla giriş yaptınız")
+            login(request,user)
+            return redirect("index")
+    else:
+        return render(request,"login.html")
+
+    #return render(request,"login.html")
 def logout(request):
     return HttpResponse("çıkış yap")
