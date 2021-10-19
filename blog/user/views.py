@@ -6,17 +6,22 @@ from django.contrib.auth import logout as django_logout
 
 from django.contrib import messages
 def register(request):
-    form =RegisterForm(request.POST or None)
-    if form.is_valid():
-        username=form.cleaned_data.get("username")
-        mail=form.cleaned_data.get("mail")
-        password=form.cleaned_data.get("password")
-        newUser=User(username=username,email=mail)
-        newUser.set_password(password)
-        newUser.save()
-        login(request,newUser)
-        messages.success(request,"Başarıyla kayıt olundu")
-        return redirect("index")
+    #form =RegisterForm(request.POST or None)
+    form=RegisterForm(request.POST)
+    if request.method=="POST":
+        if form.is_valid():
+            username=form.cleaned_data.get("username")
+            mail=form.cleaned_data.get("mail")
+            password=form.cleaned_data.get("password")
+            newUser=User(username=username,email=mail)
+            newUser.set_password(password)
+            newUser.save()
+            login(request,newUser)
+            messages.success(request,"Başarıyla kayıt olundu")
+            return redirect("index")
+        else:
+            messages.success(request,"Parolalar Eşleşmiyor")
+            return render(request,"register.html")
     else:
         return render(request,"register.html")
 
