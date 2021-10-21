@@ -7,4 +7,5 @@ urlpatterns = [
     path("dashboard/",views.dashboard,name="dashboard"),
     path("addArticle/",views.addArticle,name="addArticle"),
     path("articles/",views.articles,name="articles"),
+    path("article/<int:id>", views.articleDetail, name="articleDetail"),
 ]

@@ -18,6 +18,10 @@ def articles(request):  # sadace giriş yapan kullanıcının makalelerinin bulu
     articles = Article.objects.filter(author=request.user)
     return render(request, "userArticles.html", {"articles": articles})
 
+def articleDetail(request,id):
+    article=Article.objects.filter(id=id)
+    return render(request,"detailArticle.html",{"article":article})
+
 def addArticle(request):
     form=ArticleForm(request.POST or None)
     if form.is_valid():

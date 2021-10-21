@@ -6,20 +6,21 @@
 {% block body%}
 {% include 'navbar.html' %}
 <div class="bg bg-info text-center m-3 p-3 rounded">
-    <h3>DashBoard</h3>
+    <h3><Makalelerim></Makalelerim></h3>
 </div>
 {% if messages %}
     {% for message in messages %}
     <div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
     {% endfor %}
 {% endif %}
-
-<div class="">
+{% if articles %}
+<div class="card text-center">
 <table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Makale Başlığı</th>
+      <th scope="col">Oluşturma Tarihi</th>
       <th scope="col">Detaylar</th>
       <th scope="col">Düzenle</th>
       <th scope="col">Sil</th>
@@ -30,14 +31,23 @@
   {%for article in articles %}
     <tr>
       <th scope="row">{{article.id}}</th>
-      <td>{{article.title}}</td>
-      <td><button class="btn btn-outline-primary"><i class="far fa-eye"></i> Detaylar</button></td>
-      <td><button class="btn btn-outline-warning"><i class="fas fa-pencil-alt"></i> Düzenle</button></td>
-      <td><button class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</button></td>
+      <td><div class="d-grid gap-2"><a class="btn btn-outline-light" href="/articles/article/{{article.id}}">{{article.title}}</a></div></td>
+      <td><div class="d-grid gap-2"><a class="btn btn-outline-info"><i class="fas fa-calendar-alt"></i> {{article.createdDate}}</a></div></td>
+      <td><div class="d-grid gap-2"><a class="btn btn-outline-primary" href="/articles/article/{{article.id}}"><i class="far fa-eye"></i> Detaylar</a></div></td>
+      <td><div class="d-grid gap-2"><a class="btn btn-outline-warning" href="/articles/update/{{article.id}}"><i class="fas fa-pencil-alt"></i> Düzenle</a></div></td>
+      <td><div class="d-grid gap-2"><a class="btn btn-outline-danger" href="/articles/delete/{{article.id}}"><i class="fas fa-trash"></i> Sil</a></div></td>
     </tr>
   {%endfor%}
   <!-- MAKALE BİTİŞİ -->
   </tbody>
 </table>
 </div>
+{% else %}
+<div class="card text-center">
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Üzgünüz Hiç Makaleniz Bulunmuyor</h4>
+  <p>Makale oluşturmak için lütfen sağ üstten "Makale Yaz" butonuna basınız.</p>
+</div></div>
+{% endif %}
+
 {% endblock %}
