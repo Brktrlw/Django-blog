@@ -21,9 +21,9 @@
          </ul>
          {% if request.user.is_authenticated %}
 
-         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#openAddArticle"><i class="fas fa-pencil-alt"></i> Makale Yaz</button>&nbsp;
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#openAddArticle"><i class="fas fa-pencil-alt"></i> Makale Yaz</button>&nbsp;
          <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user"></i> Hesabım
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
@@ -56,7 +56,8 @@
       </div>
    </div>
 </div>
-
+<form method="post">
+    {% csrf_token %}
 <div class="modal fade" id="openAddArticle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -68,19 +69,20 @@
       <div class="modal-body">
          <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Makale Başlığı:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label class="col-form-label">Makale Başlığı:</label>
+            <input type="text" class="form-control" name="title" id="id_title">
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Makale Açıklaması:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <label class="col-form-label">Makale Açıklaması:</label>
+            <textarea class="form-control" name="content" id="id_content"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fas fa-times"></i> Kapat</button>
-        <button type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Makale Oluştur</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Makale Oluştur</button>
       </div>
     </div>
   </div>
 </div>
+</form>

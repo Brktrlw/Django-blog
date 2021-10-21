@@ -5,7 +5,6 @@ class Article(models.Model):
     title      = models.CharField(max_length=50,verbose_name="Başlık")
     content    = models.TextField(verbose_name="İçerik")
     createdDate= models.DateTimeField(auto_now_add=True,verbose_name="Oluşturma Tarihi")
-    articleType= models.TextField(max_length=30,verbose_name="Makale Türü")
 
     def __str__(self):
         return self.title
