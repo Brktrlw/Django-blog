@@ -10,16 +10,12 @@ def about(request):
     return render(request,"about.html")
 
 def dashboard(request): # Tüm makalelerin bulunduğu sayfa
-    # Düzenlenecek
     articles=Article.objects.filter(author=request.user)
-    return render(request,"dashboard.html",{"articles":articles})
-
-def articles(request):  # sadace giriş yapan kullanıcının makalelerinin bulunduğu method
-    articles = Article.objects.filter(author=request.user)
-    return render(request, "userArticles.html", {"articles": articles})
+    return render(request,"userArticles.html",{"articles":articles})
 
 def articleDetail(request,id):
-    article=Article.objects.filter(id=id)
+    article=Article.objects.filter(id=id).first()
+    print(article)
     return render(request,"detailArticle.html",{"article":article})
 
 def addArticle(request):
