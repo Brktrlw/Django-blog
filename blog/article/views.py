@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import ArticleForm
 from django.contrib import messages
 from .models import Article
@@ -14,8 +14,8 @@ def dashboard(request): # Tüm makalelerin bulunduğu sayfa
     return render(request,"userArticles.html",{"articles":articles})
 
 def articleDetail(request,id):
-    article=Article.objects.filter(id=id).first()
-    print(article)
+    #article=Article.objects.filter(id=id).first()
+    article=get_object_or_404(Article,id=id)
     return render(request,"detailArticle.html",{"article":article})
 
 def addArticle(request):
