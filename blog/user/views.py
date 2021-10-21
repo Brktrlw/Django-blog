@@ -46,3 +46,4 @@ def logout(request):
     django_logout(request)
     messages.success(request,"Başarıyla çıkış yaptınız")
     return redirect("index")
+
