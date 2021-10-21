@@ -1,13 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/dashboardStyle.css' %}">
-{% endblock%}
 {% block body%}
 {% include 'navbar.html' %}
-<div class="bg bg-info text-center m-3 p-3 rounded">
-    <h3>DashBoard</h3>
-</div>
 {% if messages %}
     {% for message in messages %}
     <div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>

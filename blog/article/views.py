@@ -14,9 +14,11 @@ def dashboard(request): # Tüm makalelerin bulunduğu sayfa
     return render(request,"userArticles.html",{"articles":articles})
 
 def articleDetail(request,id):
-    #article=Article.objects.filter(id=id).first()
-    article=get_object_or_404(Article,id=id)
-    return render(request,"detailArticle.html",{"article":article})
+    article=Article.objects.filter(id=id).first()
+    if article==None:
+        return render(request,"404page.html")
+    else:
+        return render(request,"detailArticle.html",{"article":article})
 
 def addArticle(request):
     form=ArticleForm(request.POST or None)
