@@ -46,4 +46,11 @@ def addArticle(request):
     return render(request,"dashboard.html")
 
 def updateArticle(request,id):
-    return render(request,"updateArticle.html")
+    article=get_object_or_404(Article,id=id)
+    form=ArticleForm(request.POST or None,request.FILES or None,instance=article)
+    if form.is_valid():
+        article=form.save()
+        article.author=request.user
+        article.save()
+        return redirect("index")
+    return render(request,"updateArticle.html",{"form":form})

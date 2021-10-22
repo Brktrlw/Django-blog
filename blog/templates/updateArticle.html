@@ -6,38 +6,42 @@
 
 {% block body%}
 {% include 'navbar.html' %}
+
+
+
 <div class="bg bg-info text-center m-3 p-3 rounded">
-    <h3>Blog Sayfasına Hoş Geldiniz</h3>
+    <h3>Makale Güncelle</h3>
 </div>
 {% if messages %}
     {% for message in messages %}
     <div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
     {% endfor %}
 {% endif %}
-<form method="post" action="/articles/addArticle/" enctype="multipart/form-data">
+
+
+<form method="post" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
 <div class="" id="openAddArticle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
          <img src="https://cdn-icons.flaticon.com/png/512/3079/premium/3079967.png?token=exp=1634665909~hmac=be834a8d3f3360d3dc3b79b5b1e4f849" width="100" alt="">
-        <h5 class="modal-title">Makale Güncelle</h5>
       </div>
       <div class="modal-body">
           <div class="mb-3">
             <label class="col-form-label">Makale Başlığı:</label>
-            <input type="text" class="form-control" name="title" id="id_title" required>
+            <input type="text" class="form-control" name="title" id="id_title" required value="{{form.title.value}}">
           </div>
           <div class="mb-3">
             <label class="col-form-label">Makale Açıklaması:</label>
-            <textarea class="form-control" name="content" id="id_content" required></textarea>
+            <textarea class="form-control" name="content" id="id_content" required>{{form.content.value}}</textarea>
           </div>
              <div class="mb-3">
-              <input class="form-control" type="file" name="articleImage" id="id_articleImage">
+              <input class="form-control" type="file" name="articleImage" id="id_articleImage" value="media/{{form.articleImage.value}}">
             </div>
       </div>
       <div class="modal-footer">
-          <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Makale Güncelle</button>
+          <button type="submit" class="btn btn-outline-primary"><i class="fas fa-sync-alt"></i> Makale Güncelle</button>
       </div>
     </div>
   </div>
