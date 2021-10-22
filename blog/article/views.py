@@ -20,6 +20,9 @@ def articleDetail(request,id):
     else:
         return render(request,"detailArticle.html",{"article":article})
 
+def articleCategorie(request):
+    return render(request,"articleCategories.html")
+
 def createArticle(request):
     return render(request,"createArticle.html")
 

@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/categories.css' %}">
+{% endblock%}
+{% block body%}
+{% include 'navbar.html' %}
+{% if messages %}
+{% for message in messages %}
+<div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
+{% endfor %}
+{% endif %}
+<div class="main-container">
+   <div class="bg bg-info text-center m-3 p-3 rounded">
+      <div class="heading"></div>
+      <h1 class="heading__title">Makaleler</h1>
+      <p class="heading__credits">Makale Kategorileri</p>
+   </div>
+   <div class="cards">
+      <div class="card card-1">
+         <a href="" style="text-decoration:none;">
+            <div class="card__icon"><i class="fas fa-film"></i></div>
+            <h2 class="card__title">Filmler ile ilgili yazılmış makaleler</h2>
+            <p class="card__apply"><br><br>
+         <a class="card__link" href="#">Şimdi Oku <i class="fas fa-arrow-right"></i></a>
+         </p></a>
+      </div>
+      <div class="card card-2">
+        <a href="" style="text-decoration:none;">
+         <div class="card__icon"><i class="fas fa-music"></i></div>
+         <h2 class="card__title">Müzikler ile ilgili yazılmış makaleler</h2>
+         <p class="card__apply"><br><br>
+            <a class="card__link" href="#">Şimdi Oku <i class="fas fa-arrow-right"></i></a>
+         </p></a>
+      </div>
+      <div class="card card-3">
+         <a href="" style="text-decoration:none;">
+         <div class="card__icon"><i class="fas fa-gamepad"></i></div>
+         <h2 class="card__title">Oyunlar ile ilgili yazılmış makaleler</h2>
+         <p class="card__apply"><br><br>
+            <a class="card__link" href="#">Şimdi Oku <i class="fas fa-arrow-right"></i></a>
+         </p></a>
+      </div>
+      <div class="card card-4">
+         <a href="" style="text-decoration:none;">
+         <div class="card__icon"><i class="fas fa-book"></i></div>
+         <h2 class="card__title">Kitaplar ile ilgili yazılmış makaleler</h2>
+         <p class="card__apply"><br><br>
+            <a class="card__link" href="#">Şimdi Oku <i class="fas fa-arrow-right"></i></a>
+         </p></a>
+      </div>
+      <div class="card card-5">
+          <a href="" style="text-decoration:none;">
+         <div class="card__icon"><i class="fas fa-heartbeat"></i></div>
+         <h2 class="card__title">Sağlık konusu ile ilgili yazılmış makaleler</h2>
+         <p class="card__apply"><br><br>
+            <a class="card__link" href="#">Şimdi Oku <i class="fas fa-arrow-right"></i></a>
+         </p></a>
+      </div>
+      <div class="card card-1">
+          <a href="" style="text-decoration:none;">
+         <div class="card__icon"><i class="fas fa-laptop-code"></i></div>
+         <h2 class="card__title">Bilişim ile ilgili yazılmış makaleler</h2>
+         <p class="card__apply"><br><br>
+            <a class="card__link" href="#">Şimdi Oku <i class="fas fa-arrow-right"></i></a>
+         </p></a>
+      </div>
+   </div>
+</div>
+{% endblock %}
