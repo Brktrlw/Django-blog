@@ -22,13 +22,13 @@
    <div class="cards">
       <div class="card card-1">
          <a href="" style="text-decoration:none;">
-            <div class="card__icon"><i class="fas fa-film"></i></div>
+            <div class="card__icon"><i class="fas fa-clipboard-list"></i></div>
             <h2 class="card__title">{{article.title}}</h2><p style="color:white;">{{article.content}}</p>
             <p class="card__apply"><br><br>
          Yazar: <a class="card__link" href="#">{{article.author}}</a>
          </p></a>
       </div>
-   </div><img src="https://cdn-icons.flaticon.com/png/512/5205/premium/5205823.png?token=exp=1634922689~hmac=f7924770689ebf23ef0eab959f5e8070" alt="">
+   </div><img src="/media/{{article.articleImage}}" alt="" width="700px">
 </center>
 
 {% endblock %}

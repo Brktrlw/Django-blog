@@ -13,6 +13,8 @@ def dashboard(request): # Tüm makalelerin bulunduğu sayfa
     articles=Article.objects.filter(author=request.user)
     return render(request,"userArticles.html",{"articles":articles})
 
+def errorPage(request):
+    return render(request,"404page.html")
 def articleDetail(request,id):
     article=Article.objects.filter(id=id).first()
     if article==None:
@@ -23,17 +25,25 @@ def articleDetail(request,id):
 def articleCategorie(request):
     return render(request,"articleCategories.html")
 
-
+def redirectIndex(request):
+    if request.method=="GET":
+        return redirect("index")
 
 def addArticle(request):
-    form=ArticleForm(request.POST,request.FILES)
-    if form.is_valid():
-        article=form.save(commit=False)
-        article.author=request.user
-        print(form.cleaned_data.get("articleImage"))
-        article.save()
-        #title = form.cleaned_data.get("title")
-        #content = form.cleaned_data.get("content")
-        messages.success(request,"Makale başarıyla kayıt edildi.")
+    if request.method == 'GET':
         return redirect("index")
+    else:
+        form=ArticleForm(request.POST,request.FILES or None)
+        if form.is_valid():
+            article=form.save(commit=False)
+            article.author=request.user
+            print(form.cleaned_data.get("content"))
+            article.save()
+            #title = form.cleaned_data.get("title")
+            #content = form.cleaned_data.get("content")
+            messages.success(request,"Makale başarıyla kayıt edildi.")
+            return redirect("index")
     return render(request,"dashboard.html")
+
+def updateArticle(request,id):
+    return render(request,"updateArticle.html")
