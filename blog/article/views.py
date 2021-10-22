@@ -24,6 +24,7 @@ def articleCategorie(request):
     return render(request,"articleCategories.html")
 
 
+
 def addArticle(request):
     form=ArticleForm(request.POST or None)
     if form.is_valid():

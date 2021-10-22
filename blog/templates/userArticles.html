@@ -11,9 +11,13 @@
     <div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
     {% endfor %}
 {% endif %}
-{% if articles %}
+{% if articles %}<br>
 
-<div class="card text-center article-table">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-0 col-md-1 col-lg-1 col-xl-9">
+          <div class="card bg-dark text-white" style="border-radius: 15px;">
+            <div class="card-body p-5">
+
 <table class="table table-hover table-dark">
   <thead>
     <tr>

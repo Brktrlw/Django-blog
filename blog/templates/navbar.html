@@ -67,7 +67,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-         <form>
           <div class="mb-3">
             <label class="col-form-label">Makale Başlığı:</label>
             <input type="text" class="form-control" name="title" id="id_title">
@@ -76,7 +75,9 @@
             <label class="col-form-label">Makale Açıklaması:</label>
             <textarea class="form-control" name="content" id="id_content"></textarea>
           </div>
-        </form>
+             <div class="mb-3">
+              <input class="form-control" type="file" name="articleImage" id="id_articleImage">
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fas fa-times"></i> Kapat</button>
