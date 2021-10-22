@@ -20,6 +20,9 @@ def articleDetail(request,id):
     else:
         return render(request,"detailArticle.html",{"article":article})
 
+def createArticle(request):
+    return render(request,"createArticle.html")
+
 def addArticle(request):
     form=ArticleForm(request.POST or None)
     if form.is_valid():
