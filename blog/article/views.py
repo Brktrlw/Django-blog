@@ -26,10 +26,11 @@ def articleCategorie(request):
 
 
 def addArticle(request):
-    form=ArticleForm(request.POST or None)
+    form=ArticleForm(request.POST,request.FILES)
     if form.is_valid():
         article=form.save(commit=False)
         article.author=request.user
+        print(form.cleaned_data.get("articleImage"))
         article.save()
         #title = form.cleaned_data.get("title")
         #content = form.cleaned_data.get("content")

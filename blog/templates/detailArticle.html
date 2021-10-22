@@ -1,50 +1,34 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block styles %}
-<style>.blockquote-custom {
-  position: relative;
-  font-size: 1.1rem;
-}
-
-.blockquote-custom-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: -25px;
-  left: 50px;
-}</style>
+<link rel="stylesheet" href="{% static 'css/articledetails.css' %}">
 {% endblock%}
 {% block body%}
 {% include 'navbar.html' %}
-<div class="bg bg-info text-center m-3 p-3 rounded">
-    <h3>{{article.title}}	</h3>
-</div>
+
 {% if messages %}
-    {% for message in messages %}
-    <div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
-    {% endfor %}
+{% for message in messages %}
+<div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
+{% endfor %}
 {% endif %}
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
+<center>
+   <div class="bg bg-info text-center m-3 p-3 rounded">
+      <div class="heading"></div>
+      <h1 class="heading__title">Makaleler</h1>
+      <p class="heading__credits">Makale Kategorileri</p>
+   </div>
 
-                <blockquote class="blockquote blockquote-custom bg-white p-5 shadow rounded">
-					<a class="btn btn-primary" style="">{{article.title}}</a>
-                    <div class="blockquote-custom-icon bg-info shadow-sm"><i class="fa fa-quote-left text-white"></i></div>
-                    <p class="mb-0 mt-2 font-italic">{{article.content}}</p>
-                    <footer class="blockquote-footer pt-4 mt-4 border-top">Yazar:
-                        <cite title="Source Title">{{article.author}}</cite>
-                    </footer>
-                </blockquote>
 
-            </div>
-        </div>
-    </div>
-</section>
+   <div class="cards">
+      <div class="card card-1">
+         <a href="" style="text-decoration:none;">
+            <div class="card__icon"><i class="fas fa-film"></i></div>
+            <h2 class="card__title">{{article.title}}</h2><p style="color:white;">{{article.content}}</p>
+            <p class="card__apply"><br><br>
+         Yazar: <a class="card__link" href="#">{{article.author}}</a>
+         </p></a>
+      </div>
+   </div><img src="https://cdn-icons.flaticon.com/png/512/5205/premium/5205823.png?token=exp=1634922689~hmac=f7924770689ebf23ef0eab959f5e8070" alt="">
+</center>
 
 {% endblock %}
