@@ -8,5 +8,4 @@ urlpatterns = [
     path("addArticle/",views.addArticle,name="addArticle"),
     path("details/<int:id>", views.articleDetail, name="articleDetail"),
     path("article-categorie/",views.articleCategorie,name="articleCategorie"),
-    path("create-article/",views.createArticle,name="createArticle")
 ]

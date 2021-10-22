@@ -23,8 +23,6 @@ def articleDetail(request,id):
 def articleCategorie(request):
     return render(request,"articleCategories.html")
 
-def createArticle(request):
-    return render(request,"createArticle.html")
 
 def addArticle(request):
     form=ArticleForm(request.POST or None)
