@@ -3,7 +3,7 @@ from .forms import RegisterForm,LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate
 from django.contrib.auth import logout as django_logout
-
+from django.db import IntegrityError
 from django.contrib import messages
 def register(request):
     #form =RegisterForm(request.POST or None)
@@ -15,7 +15,16 @@ def register(request):
             password=form.cleaned_data.get("password")
             newUser=User(username=username,email=mail)
             newUser.set_password(password)
-            newUser.save()
+            try:
+                newUser.save()
+            except IntegrityError as e:
+
+                if str(e)=="UNIQUE constraint failed: auth_user.username":
+                    messages.warning(request,"Bu kullanıcı adı daha önce alınmış")
+                    return render(request,"register.html")
+                else:
+                    messages.warning(request, "Bu e posta adresi sisteme kayıtlı")
+                    return render(request, "register.html")
             login(request,newUser)
             messages.success(request,"Başarıyla kayıt olundu")
             return redirect("index")
