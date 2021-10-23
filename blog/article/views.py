@@ -86,4 +86,4 @@ def addComment(request,id):
         newComment=Comment(commentContent=commentContent,commentAuthor_id=request.user.id)
         newComment.article=article
         newComment.save()
-        return redirect(reverse("article:detail"))
+        return redirect("/articles/details/"+str(id))

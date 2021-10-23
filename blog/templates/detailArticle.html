@@ -93,6 +93,7 @@
    <img src="/media/{{article.articleImage}}" alt="" width="700px">
 </center>
 </div>
+{% if user.is_authenticated %}
 <form action="{% url 'article:addComment' article.id %}" method="post">
    {% csrf_token %}
 <div class="container w-50 p-3">
@@ -105,18 +106,23 @@
             <div class="clearfix"></div>
          </div>
       </div>
-   </div>
+   </div></div>
    </form>
+{% else %}
+<div class="alert alert-danger">Yorum Yapmak İçin <a href="/user/login/" style="text-decoration:none">Giriş</a> Yapınız</div>
+{% endif %}
 <!-- YORUM BASLANGICI -->
+{% if comments %}
+{% for comment in comments %}
    <div class="media g-mb-30 media-comment">
             <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
               <div class="g-mb-15">
-                <h5 class="h5 g-color-gray-dark-v1 mb-0">YAZAR İSMİ</h5>
-                <span class="g-color-gray-dark-v4 g-font-size-12">TARİH</span>
+                <h5 class="h5 g-color-gray-dark-v1 mb-0">{{comment.commentAuthor}}</h5>
+                <span class="g-color-gray-dark-v4 g-font-size-12">{{comment.commentDate}}</span>
               </div>
 
-              <p>YORUM IÇERİĞİ</p>
+              <p>{{comment.commentContent}}</p>
 
               <ul class="list-inline d-sm-flex my-0">
                 <li class="list-inline-item g-mr-20">
@@ -135,6 +141,10 @@
             </div>
         </div>
     </div>
+{% endfor %}
+{% else %}<br>
+<div class="alert alert-danger">HİÇ YORUM YAPILMAMIŞ</div>
+{% endif %}
 <!-- YORUM BITISI -->
 
 
