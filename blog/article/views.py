@@ -30,7 +30,7 @@ def articleCategorie(request):
 
 def redirectIndex(request):
     if request.method=="GET":
-        return redirect("index")
+        return render("index")
 
 @login_required(login_url="user:login")
 def addArticle(request):
@@ -67,5 +67,10 @@ def deleteArticle(request,id):
     return redirect("article:dashboard")
 
 def categorie(request,id):
-    articles=Article.objects.filter(Atype_id=id)
-    return render(request,"articlesCAT.html",{"articles":articles})
+    keyword=request.GET.get("keyword")
+    if keyword:
+        articles=Article.objects.filter(title__contains=keyword,Atype_id=id)
+        return render(request,"articlesCAT.html",{"articles":articles})
+    else:
+        articles=Article.objects.filter(Atype_id=id)
+        return render(request,"articlesCAT.html",{"articles":articles})

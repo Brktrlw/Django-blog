@@ -17,7 +17,9 @@
             &nbsp;
             <li class="nav-item">
                <a class="btn btn-outline-info" href="/articles/article-categorie/"><i class="fas fa-clipboard-list"></i> Makaleler</a>
-            </li>
+            </li>&nbsp;
+
+
          </ul>
          {% if request.user.is_authenticated %}
          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#openAddArticle"><i class="fas fa-pencil-alt"></i> Makale Yaz</button>&nbsp;
@@ -30,7 +32,12 @@
                <li><a class="dropdown-item" href="/articles/dashboard/"><i class="fas fa-clipboard-list" style="color:#149911"></i> Makalelerim</a></li>
                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-sign-out-alt" style="color:red"></i> Çıkış Yap</button></li>
             </ul>
+
          </div>
+
+
+
+
          {% else %}
          <a class="btn btn-outline-success" href="/user/login"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>&nbsp;
          <a class="btn btn-outline-primary" href="/user/register"></i><i class="fas fa-user-plus"></i> Kayıt Ol</a>
