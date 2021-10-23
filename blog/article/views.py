@@ -18,7 +18,6 @@ def dashboard(request): # Tüm makalelerin bulunduğu sayfa
 def errorPage(request):
     return render(request,"404page.html")
 
-@login_required(login_url="user:login")
 def articleDetail(request,id):
     article=Article.objects.filter(id=id).first()
     if article==None:
