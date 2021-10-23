@@ -36,6 +36,15 @@
             <label class="col-form-label">Makale Açıklaması:</label>
             <textarea class="form-control" name="content" id="id_content" required>{{form.content.value}}</textarea>
           </div>
+          <select class="form-control" name="Atype" id="id_Atype">
+                     <option selected>Makale Türü</option>
+                     <option value="1">Film</option>
+                     <option value="2">Müzik</option>
+                     <option value="3">Oyun</option>
+                     <option value="4">Kitap</option>
+                     <option value="5">Sağlık</option>
+                     <option value="6">Bilişim</option>
+                  </select><br>
              <div class="mb-3">
               <input class="form-control" type="file" name="articleImage" id="id_articleImage" value="media/{{form.articleImage.value}}">
             </div>
