@@ -1,7 +1,7 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,reverse
 from .forms import ArticleForm
 from django.contrib import messages
-from .models import Article
+from .models import Article,Comment
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -20,10 +20,13 @@ def errorPage(request):
 
 def articleDetail(request,id):
     article=Article.objects.filter(id=id).first()
+    comments=article.getComments.all()
+
+
     if article==None:
         return render(request,"404page.html")
     else:
-        return render(request,"detailArticle.html",{"article":article})
+        return render(request,"detailArticle.html",{"article":article,"comments":comments})
 
 def articleCategorie(request):
     return render(request,"articleCategories.html")
@@ -74,3 +77,13 @@ def categorie(request,id):
     else:
         articles=Article.objects.filter(Atype_id=id)
         return render(request,"articlesCAT.html",{"articles":articles})
+@login_required
+def addComment(request,id):
+    article=get_object_or_404(Article,id=id)
+    if request.method=="POST":
+        commentContent=request.POST.get("commentContent")
+        print(commentContent,"**************************")
+        newComment=Comment(commentContent=commentContent,commentAuthor_id=request.user.id)
+        newComment.article=article
+        newComment.save()
+        return redirect(reverse("article:detail"))

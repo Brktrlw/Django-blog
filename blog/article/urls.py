@@ -13,4 +13,5 @@ urlpatterns = [
     path("delete/<int:id>",views.deleteArticle,name="deleteArticle"),
     path("article-categorie/",views.articleCategorie,name="articleCategorie"),
     path("categorie/<int:id>", views.categorie, name="categorie"),
+    path("comment/<int:id>",views.addComment,name="addComment")
 ]

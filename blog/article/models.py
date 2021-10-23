@@ -17,7 +17,7 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 class Comment(models.Model):
-    article=models.ForeignKey(Article,on_delete=models.CASCADE,related_name="comments")
+    article=models.ForeignKey(Article,on_delete=models.CASCADE,related_name="getComments")
     commentAuthor=models.ForeignKey("auth.User",on_delete=models.CASCADE)
     commentContent=models.CharField(max_length=200)
     commentDate=models.DateTimeField(auto_now_add=True)
