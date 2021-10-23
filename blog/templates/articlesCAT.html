@@ -16,6 +16,7 @@
 <div class="card bg-dark text-white" style="border-radius: 15px;">
 <div class="card-body p-5">
     <form style="display:block">
+       {% csrf_token %}
        <div class="input-group">
           <input class="form-control border-end-0 border rounded-pill" type="search" name="keyword" placeholder="Makale Ara">&nbsp;<button class="btn btn-outline-primary bg-white border-bottom-0 border rounded-pill ms-n5" type="submit">
           <i class="fa fa-search"></i>
