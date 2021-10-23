@@ -12,4 +12,5 @@ urlpatterns = [
     path("update/<int:id>",views.updateArticle,name="updateArticle"),
     path("delete/<int:id>",views.deleteArticle,name="deleteArticle"),
     path("article-categorie/",views.articleCategorie,name="articleCategorie"),
+    path("categorie/<int:id>", views.categorie, name="categorie"),
 ]

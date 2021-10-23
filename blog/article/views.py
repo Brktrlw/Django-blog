@@ -66,3 +66,7 @@ def deleteArticle(request,id):
     article.delete()
     messages.success(request,"Makale başarıyla silindi")
     return redirect("article:dashboard")
+
+def categorie(request,id):
+    articles=Article.objects.filter(Atype_id=id)
+    return render(request,"articlesCAT.html",{"articles":articles})
