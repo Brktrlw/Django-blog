@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block styles%}
-
 {% endblock %}
 
 {% block body%}
@@ -14,6 +13,8 @@
     <div{% if message.tags %} class="alert alert-{{ message.tags }} m-3 p-3 rounded"{% endif %}>{{ message }}</div>
     {% endfor %}
 {% endif %}
+
+
 
 
 {% endblock %}

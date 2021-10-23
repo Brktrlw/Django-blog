@@ -42,7 +42,6 @@ def addArticle(request):
         if form.is_valid():
             article=form.save(commit=False)
             article.author=request.user
-            print(form.cleaned_data.get("content"))
             article.save()
             #title = form.cleaned_data.get("title")
             #content = form.cleaned_data.get("content")
